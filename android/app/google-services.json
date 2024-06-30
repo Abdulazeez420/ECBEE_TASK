@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "682673718229",
+    "project_id": "ecbeetest",
+    "storage_bucket": "ecbeetest.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:682673718229:android:801edb1f0b91e63918735c",
+        "android_client_info": {
+          "package_name": "com.example.ecbee_test_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBLmDqHSSUf7otpxSicZTno8ANUU2c3Cuk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
