@@ -3,7 +3,7 @@ import 'package:ecbee_test_app/app/routes/app_pages.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
+import 'package:get_storage/get_storage.dart';
 class LoginController extends GetxController {
   RxBool sendClick=true.obs;
   RxBool getCode=false.obs;
@@ -16,6 +16,7 @@ class LoginController extends GetxController {
   RxString countrycode=''.obs;
   final phoneFormKey = GlobalKey<FormState>();
   final smsFormKey = GlobalKey<FormState>();
+
   void codeSelect(){
 showCountryPicker(
   context:Get.context!,

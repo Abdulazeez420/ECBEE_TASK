@@ -12,6 +12,7 @@ import 'package:flutter/material.dart';
 
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'package:http/http.dart' as http;
 import 'package:geocoding/geocoding.dart';
@@ -29,7 +30,8 @@ class HomeController extends GetxController {
   String? userLocation;
   String?city;
   String? userIP;
- 
+   final localstorage = GetStorage();
+
 
 
 Future<void> getLocationPermissionAndCurrentLocation() async {
@@ -42,6 +44,7 @@ Future<void> getLocationPermissionAndCurrentLocation() async {
 
     final placemarks = await placemarkFromCoordinates(position.latitude, position.longitude);
      city = placemarks[0].locality;
+     localstorage.write('city',city);
     print('City: $city');
   } else {
     print('Location permission denied');
@@ -99,11 +102,12 @@ Future<void> saveData() async {
 
     // Save the login details to Firestore
     if (user != null) {
+      var local= localstorage.read('city');
       await FirebaseFirestore.instance.collection('login_details').add({
         'userId': user!.uid,
         'randomNumber': randomNumber,
         'qrCodeUrl': downloadUrl,
-        'location': city ?? '',
+        'location': city ?? local,
         'ip': userIP ?? '',
         'timestamp': Timestamp.now(),
       });
